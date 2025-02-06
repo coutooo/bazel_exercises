@@ -1,0 +1,13 @@
+load(":execute.bzl","circleGen")
+
+circleGen(
+    name = "create_circle",
+    generator = "//project/generators/python:pythongen",
+)
+
+py_binary(
+    name = "pythongen",
+    srcs = ["cpp_circle_generator.py"],
+    main = "cpp_circle_generator.py",
+    visibility = ["//project:__subpackages__"],
+)
